@@ -13,12 +13,12 @@ class Mahasiswa extends Model
     protected $fillable = [
         'nama',
         'nim',
-        'user_id',
+        // 'user_id',
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    // public function user() {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
 
     public function studies() {
         return $this->belongsTo(Study::class);

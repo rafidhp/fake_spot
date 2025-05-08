@@ -10,7 +10,7 @@
 </head>
 <body>
     @if (Auth::check())
-        <h2>Selamat datang {{ Auth::user()->username }}!</h2>
+        <h2>Selamat datang {{ $dosen->nama }}!</h2>
         <br>
         <a href="{{ route('auth.logout') }}">Logout</a>
     @else

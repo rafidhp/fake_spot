@@ -48,7 +48,7 @@ class User extends Authenticatable
         return $this->belongsTo(Dosen::class);
     }
 
-    public function mahasiswa() {
-        return $this->belongsTo(Mahasiswa::class);
-    }
+    // public function mahasiswa() {
+    //     return $this->belongsTo(Mahasiswa::class);
+    // }
 }
