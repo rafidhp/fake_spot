@@ -27,7 +27,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if(Auth::user()->role == 'admin') {
+            if(Auth::user()->role === 'admin') {
                 return redirect()->intended('/');
             } else {
                 $dosen_id = Dosen::where('user_id', Auth::user()->id)->first()->id;

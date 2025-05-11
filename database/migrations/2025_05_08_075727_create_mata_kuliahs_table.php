@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_mk')->unique();
             $table->string('nama_mk');
-            $table->string('sks');
+            $table->integer('sks');
             $table->foreignId('dosen_id')->constrained('dosens');
             $table->timestamps();
         });
