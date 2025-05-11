@@ -49,3 +49,10 @@ php artisan db:seed UserSeeder
 php artisan serve
 ```
 
+Using bootstrap in blade file
+
+```bash
+<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+<script src="{{ asset('bootstrap/js/bootstrap.bundle.js') }}"></script>
+```
+Place the code above in the head for CSS and in the body for the JS script
