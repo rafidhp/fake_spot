@@ -50,7 +50,7 @@ php artisan serve
 ```
 
 Using bootstrap in blade file
-
+bootstrap docs: https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
 ```blade
 <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
