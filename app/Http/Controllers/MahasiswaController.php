@@ -36,6 +36,55 @@ class MahasiswaController extends Controller
         return view('dosen.mahasiswa.create', compact('dosen', 'semesters'));
     }
 
+    public function download_template() {
+        $file = storage_path('app/download/template-data-mahasiswa.csv');
+        return response()->download($file);
+    }
+
+    public function import(Request $request, $dosen_id) {
+        $request->validate([
+            'semester_id' => 'required|exists:semesters,id',
+            'file' => 'required|max:5120',
+        ], [
+            'semester_id.required' => 'Semester harus dipilih.',
+            'semester_id.exists' => 'Semester tidak valid.',
+            'file.required' => 'File harus diunggah.',
+            'file.mimes' => 'File harus berupa file CSV.',
+            'file.max' => 'Ukuran file tidak boleh lebih dari 5 MB.',
+        ]);
+
+        $file = $request->file('file');
+        $file_content = file($file->getPathname());
+
+        $skip_first_line = true;
+
+        foreach($file_content as $line) {
+
+            if($skip_first_line) {
+                $skip_first_line = false;
+                continue;
+            }
+
+            $data = explode(';', $line);
+            $data = array_map('trim', $data);
+
+            $new_mahasiswa = Mahasiswa::create([
+                'nama' => $data[1],
+                'nim' => $data[0],
+            ]);
+
+            $mata_kuliah_id = MataKuliah::where('dosen_id', $dosen_id)->pluck('id');
+
+            Study::create([
+                'mahasiswa_id' => $new_mahasiswa->id,
+                'mata_kuliah_id' => $mata_kuliah_id[0],
+                'semester_id' => $request->semester_id,
+            ]);
+        }
+
+        return redirect()->route('mahasiswa.index', ['dosen_id' => $dosen_id])->with('success', 'Mahasiswa berhasil ditambahkan.');
+    }
+
     public function store(Request $request, $dosen_id) {
         $request->validate([
             'nim' => 'required|numeric|unique:mahasiswas,nim|min_digits:7|max_digits:7',

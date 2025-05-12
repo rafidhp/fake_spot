@@ -66,6 +66,8 @@ Route::controller(SemesterController::class)->middleware('auth')->group(function
 Route::controller(MahasiswaController::class)->middleware('auth')->group(function() {
     Route::get('/daftar-mahasiswa/{dosen_id}', 'index')->name('mahasiswa.index');
     Route::get('/mahasiswa/create/{dosen_id}', 'create')->name('mahasiswa.create');
+    Route::get('/mahasiswa/download-template', 'download_template')->name('mahasiswa.download_template');
+    Route::post('/mahasiswa/import/{dosen_id}', 'import')->name('mahasiswa.import');
     Route::post('/mahasiswa/store/{dosen_id}', 'store')->name('mahasiswa.store');
     Route::get('/mahasiswa/edit/{study_id}', 'edit')->name('mahasiswa.edit');
     Route::post('/mahasiswa/update/{study_id}', 'update')->name('mahasiswa.update');
