@@ -50,10 +50,10 @@ class AuthController extends Controller
             'username' => 'required|unique:users',
             'email' => 'required|email',
             'password' => 'required|min:6|confirmed',
-            'jenis_kelamin' => 'required',
+            'jenis_kelamin' => 'required|in:L,P',
         ], [
-            'name.required' => 'Name is required',
-            'name.max' => 'Name must not exceed 255 characters',
+            'nama.required' => 'Name is required',
+            'nama.max' => 'Name must not exceed 255 characters',
             'username.required' => 'Username is required',
             'username.unique' => 'Username already exists',
             'email.required' => 'Email is required',
@@ -62,6 +62,7 @@ class AuthController extends Controller
             'password.min' => 'Password must be at least 6 characters',
             'password.confirmed' => 'Passwords do not match',
             'jenis_kelamin.required' => 'Jenis Kelamin is required',
+            'jenis_kelamin.in' => 'Jenis Kelamin must be either L or P',
         ]);
 
         $user = User::create([
