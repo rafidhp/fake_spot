@@ -17,21 +17,8 @@
 
 <body>
     <div class="min-h-screen flex items-center justify-center">
-        <video id="bgVideo" autoplay loop playsinline class="fixed inset-0 w-full h-full object-cover -z-10">
-            <source src="{{ asset('assets/video/BG_Login.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <script>
-            document.addEventListener('click', () => {
-                const video = document.getElementById('bgVideo');
-                video.muted = false;
-                video.play().catch((e) => {
-                    console.warn('Video gagal diputar otomatis:', e);
-                });
-            }, {
-                once: true
-            });
-        </script>
+        <img alt="Background" class="fixed inset-0 w-full h-full object-cover -z-10"
+            src="{{ asset('assets/img/Arisu.png') }}" />
         <form action="{{ route('auth.store') }}" method="post">
             @csrf
             <div class="bg-black/30 backdrop-blur-md rounded-xl w-80 p-6 drop-shadow-lg">
