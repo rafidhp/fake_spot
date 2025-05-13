@@ -45,7 +45,7 @@ Copy your .env file
 
 ```bash
 php artisan migrate
-php artisan db:seed UserSeeder
+php artisan db:seed
 php artisan serve
 ```
 
