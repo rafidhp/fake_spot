@@ -3,9 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>
-        Login Page
-    </title>
+    <title>Fake Spot</title>
+    <link rel="shortcut icon" href="{{ asset('assets/icon/upi.png') }}" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet" />
@@ -21,7 +20,7 @@
         <img alt="Background" class="fixed inset-0 w-full h-full object-cover -z-10"
             src="{{ asset('assets/img/Arisu.png') }}" />
         <form action="{{ route('auth.authorization') }}" method="POST"
-            class="bg-black/30 backdrop-blur-md rounded-2xl p-8 w-80 sm:w-96 flex flex-col items-center shadow-lg">
+            class="bg-black/50 backdrop-blur-md rounded-2xl p-8 w-80 sm:w-96 flex flex-col items-center shadow-lg">
             @csrf
             <h1 class="text-white text-2xl font-extrabold text-center mb-1 leading-tight">
                 Selamat Datang
@@ -36,7 +35,7 @@
             </label>
             <div class="flex items-center mb-4 w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2">
                 <i class="fas fa-user text-white"></i>
-                <input id="username" type="text"
+                <input name = "username" type="text"
                     class="ml-3 w-full outline-none text-white placeholder-white bg-transparent"
                     placeholder="Username" />
             </div>
@@ -45,8 +44,8 @@
             </label>
             <div class="flex items-center mb-6 w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2">
                 <i class="fas fa-lock text-white text-lg mr-3"></i>
-                <input class="w-full outline-none text-white bg-transparent placeholder:text-white" id="password"
-                    placeholder="Password" type="password" />
+                <input name = "password" class="w-full outline-none text-white bg-transparent placeholder:text-white"
+                    id="password" placeholder="Password" type="password" />
                 <i class="fas fa-eye-slash text-white text-lg cursor-pointer" id="togglePassword"
                     title="Show password"></i>
             </div>
@@ -59,7 +58,7 @@
             </button>
             <p class="text-white text-xs text-center text-black">
                 Belum punya akun?
-                <a class="text-blue-600 hover:underline" href="{{ route('auth.register') }}">
+                <a class="text-blue-300 hover:underline" href="{{ route('auth.register') }}">
                     Daftar
                 </a>
             </p>
